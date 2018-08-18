@@ -1,0 +1,83 @@
+.heading {
+
+	text-align: center;
+	color     : black;
+	width:70%;
+    display:block;
+    float: left;
+}
+
+.divRight {
+    width:30%;
+    display:block;
+    float: right;
+    height: 100%;
+    outline: 2px dashed blue;
+}
+
+.divRightPic {
+    width:30%;
+    display:block;
+    float: right;
+    height: 100%;
+}
+
+.divLeft {
+    width:10%;
+    display:block;
+    float: left;
+    height: 100%;
+    outline: 2px dashed blue;
+}
+
+#divRightContent{
+	margin: 2%;
+}
+
+.brainmap{
+	margin    :40px;
+	float:left;
+	width     : 80px; 
+	height    : 350px;
+}
+
+.channel {
+	width           :20px;
+	height          :20px;
+	border          :1px;
+	background-color: black;
+	margin          :  auto;
+}
+
+.last_channel {
+	width           :60px;
+	height          :20px;
+	border          :1px;
+	background-color: black;
+	margin          :  auto;
+}
+
+.rows{
+	margin-top: 20px;
+}
+.bm-container{
+	top: 40%;
+	left: 12%;
+	width:70%;
+    display:block;
+    float: left;
+}
+
+.bm-containerSetColors{
+	width:50%;
+    display:block;
+    float: left;
+    outline: 2px dashed blue;
+}
+.first {
+	float :left;
+}
+.second {
+	float :left;
+	margin-left: 5%;
+}

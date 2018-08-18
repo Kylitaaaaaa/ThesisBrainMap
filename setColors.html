@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BrainMap Generator</title>
+		<link rel="stylesheet" type="text/css" href="WebSystem.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.1.0/math.js"></script>
+	</head>
+
+
+	<body>
+		<div class="heading">
+			<h1>Brain Map</h1>
+			<h5>DHANANI, MALONZO, SANTOS</h5>
+
+
+			<h2 id= "currState"> N/A </h2>
+
+			<input type="file" id="csvFileInput" onchange="handleFiles(this.files)"
+	            accept=".csv">
+			<br /> 
+
+			<br>
+
+			<button type="button" onclick="setcurr_Emotion(0)" id="pm_int">PM interest</button>
+			<button type="button" onclick="setcurr_Emotion(1)" id="pm_frus">PM frustration</button>
+			<button type="button" onclick="setcurr_Emotion(2)" id="pm_stress">PM stress</button>
+
+			<button type="button" onclick="setcurr_Emotion(3)" id="msp_int">MSP interest</button>
+			<button type="button" onclick="setcurr_Emotion(4)" id="msp_frus">MSP frustration</button>
+			<button type="button" onclick="setcurr_Emotion(5)" id="msp_stress">MSP stress</button>
+
+			<br>
+			<br>
+			<img src="brainGradient.png" style="width:300px;height:30px;">
+			<br>
+
+		</div>
+
+		<div class="divRightPic">
+			<img src="brainMap.png" style="width:200px;height:260px;">
+		</div>
+
+
+	<div class = "bm-containerSetColors ">	
+		<h3> FEMALE</h3>
+		
+		<div class="brainmap">
+			<h4>ALPHA</h4>
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">AF3</p>
+					<div class="channel" id = "F_A_AF3_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">AF4</p>
+					<div class="channel" id = "F_A_AF4_channel"></div>
+				</div>
+			</div>
+
+			<br >
+			<br >
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Ts7 </p>
+					<div class="channel" id = "F_A_T7_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">Ts8 </p>
+					<div class="channel" id = "F_A_T8_channel"></div>
+				</div>
+			</div>
+			
+			<br />
+
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Pz</p>
+					<div class="last_channel" id = "F_A_PZ_channel"></div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="brainmap">
+			<h5>BETA LOW</h5>
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">AF3</p>
+					<div class="channel" id = "F_BL_AF3_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">AF4</p>
+					<div class="channel" id = "F_BL_AF4_channel"></div>
+				</div>
+			</div>
+
+			<br >
+			<br >
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Ts7 </p>
+					<div class="channel" id = "F_BL_T7_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">Ts8 </p>
+					<div class="channel" id = "F_BL_T8_channel"></div>
+				</div>
+			</div>
+			
+			<br />
+
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Pz</p>
+					<div class="last_channel" id = "F_BL_PZ_channel"></div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="brainmap">
+			<h5>BETA HIGH</h5>
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">AF3</p>
+					<div class="channel" id = "F_BH_AF3_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">AF4</p>
+					<div class="channel" id = "F_BH_AF4_channel"></div>
+				</div>
+			</div>
+
+			<br >
+			<br >
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Ts7 </p>
+					<div class="channel" id = "F_BH_T7_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">Ts8 </p>
+					<div class="channel" id = "F_BH_T8_channel"></div>
+				</div>
+			</div>
+					
+			<br />
+
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Pz</p>
+					<div class="last_channel" id = "F_BH_PZ_channel"></div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="brainmap">
+			<h4>GAMMA</h4>
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">AF3</p>
+					<div class="channel" id = "F_G_AF3_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">AF4</p>
+					<div class="channel" id = "F_G_AF4_channel"></div>
+				</div>
+			</div>
+
+			<br >
+			<br >
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Ts7 </p>
+					<div class="channel" id = "F_G_T7_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">Ts8 </p>
+					<div class="channel" id = "F_G_T8_channel"></div>
+				</div>
+			</div>
+					
+			<br />
+
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Pz</p>
+					<div class="last_channel" id = "F_G_PZ_channel"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class = "bm-containerSetColors ">	
+		<h3> MALE</h3>
+		<div class="brainmap">
+			<h4>ALPHA</h4>
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">AF3</p>
+					<div class="channel" id = "M_A_AF3_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">AF4</p>
+					<div class="channel" id = "M_A_AF4_channel"></div>
+				</div>
+			</div>
+
+			<br >
+			<br >
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Ts7 </p>
+					<div class="channel" id = "M_A_T7_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">Ts8 </p>
+					<div class="channel" id = "M_A_T8_channel"></div>
+				</div>
+			</div>
+			
+			<br />
+
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Pz</p>
+					<div class="last_channel" id = "M_A_PZ_channel"></div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="brainmap">
+			<h5>BETA LOW</h5>
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">AF3</p>
+					<div class="channel" id = "M_BL_AF3_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">AF4</p>
+					<div class="channel" id = "M_BL_AF4_channel"></div>
+				</div>
+			</div>
+
+			<br >
+			<br >
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Ts7 </p>
+					<div class="channel" id = "M_BL_T7_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">Ts8 </p>
+					<div class="channel" id = "M_BL_T8_channel"></div>
+				</div>
+			</div>
+			
+			<br />
+
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Pz</p>
+					<div class="last_channel" id = "M_BL_PZ_channel"></div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="brainmap">
+			<h5>BETA HIGH</h5>
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">AF3</p>
+					<div class="channel" id = "M_BH_AF3_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">AF4</p>
+					<div class="channel" id = "M_BH_AF4_channel"></div>
+				</div>
+			</div>
+
+			<br >
+			<br >
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Ts7 </p>
+					<div class="channel" id = "M_BH_T7_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">Ts8 </p>
+					<div class="channel" id = "M_BH_T8_channel"></div>
+				</div>
+			</div>
+					
+			<br />
+
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Pz</p>
+					<div class="last_channel" id = "M_BH_PZ_channel"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="brainmap">
+			<h4>GAMMA</h4>
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">AF3</p>
+					<div class="channel" id = "M_G_AF3_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">AF4</p>
+					<div class="channel" id = "M_G_AF4_channel"></div>
+				</div>
+			</div>
+
+			<br >
+			<br >
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Ts7 </p>
+					<div class="channel" id = "M_G_T7_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">Ts8 </p>
+					<div class="channel" id = "M_G_T8_channel"></div>
+				</div>
+			</div>
+					
+			<br />
+
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Pz</p>
+					<div class="last_channel" id = "M_G_PZ_channel"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class = "bm-containerSetColors ">	
+		<h3> COMPLETE</h3>
+		
+		<div class="brainmap">
+			<h4>ALPHA</h4>
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">AF3</p>
+					<div class="channel" id = "C_A_AF3_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">AF4</p>
+					<div class="channel" id = "C_A_AF4_channel"></div>
+				</div>
+			</div>
+
+			<br >
+			<br >
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Ts7 </p>
+					<div class="channel" id = "C_A_T7_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">Ts8 </p>
+					<div class="channel" id = "C_A_T8_channel"></div>
+				</div>
+			</div>
+			
+			<br />
+
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Pz</p>
+					<div class="last_channel" id = "C_A_PZ_channel"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="brainmap">
+			<h5>BETA LOW</h5>
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">AF3</p>
+					<div class="channel" id = "C_BL_AF3_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">AF4</p>
+					<div class="channel" id = "C_BL_AF4_channel"></div>
+				</div>
+			</div>
+
+			<br >
+			<br >
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Ts7 </p>
+					<div class="channel" id = "C_BL_T7_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">Ts8 </p>
+					<div class="channel" id = "C_BL_T8_channel"></div>
+				</div>
+			</div>
+			
+			<br />
+
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Pz</p>
+					<div class="last_channel" id = "C_BL_PZ_channel"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="brainmap">
+			<h5>BETA HIGH</h5>
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">AF3</p>
+					<div class="channel" id = "C_BH_AF3_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">AF4</p>
+					<div class="channel" id = "C_BH_AF4_channel"></div>
+				</div>
+			</div>
+
+			<br >
+			<br >
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Ts7 </p>
+					<div class="channel" id = "C_BH_T7_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">Ts8 </p>
+					<div class="channel" id = "C_BH_T8_channel"></div>
+				</div>
+			</div>
+					
+			<br />
+
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Pz</p>
+					<div class="last_channel" id = "C_BH_PZ_channel"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="brainmap">
+			<h4>GAMMA</h4>
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">AF3</p>
+					<div class="channel" id = "C_G_AF3_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">AF4</p>
+					<div class="channel" id = "C_G_AF4_channel"></div>
+				</div>
+			</div>
+
+			<br >
+			<br >
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Ts7 </p>
+					<div class="channel" id = "C_G_T7_channel"></div>
+				</div>
+
+				<div class="second">
+					<p style="margin-bottom: 2px">Ts8 </p>
+					<div class="channel" id = "C_G_T8_channel"></div>
+				</div>
+			</div>
+					
+			<br />
+
+			<div class = "rows">
+				<div class="first">
+					<p style="margin-bottom: 2px">Pz</p>
+					<div class="last_channel" id = "C_G_PZ_channel"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	            
+	<script>
+		curr_Emotion = 0;
+		curr_Set = 0;
+		var brainmap_val = [];
+
+		var f_brainmap_val = [];
+		var m_brainmap_val = [];
+		var c_brainmap_val = [];
+
+		/************* CSV CONTENT *************/
+			var lines = [];
+			var curr_Lines = [];
+
+		/************* COMPILED ***************/
+
+		var comp_int_pm = [];
+		var comp_frus_pm = [];
+		var comp_stress_pm = [];
+		var comp_int_msp = [];
+		var comp_frus_msp = [];
+		var comp_stress_msp = [];
+
+		var f_int_pm = [];
+		var f_frus_pm = [];
+		var f_stress_pm = [];
+		var f_int_msp = [];
+		var f_frus_msp = [];
+		var f_stress_msp = [];
+
+		var m_int_pm = [];
+		var m_frus_pm = [];
+		var m_stress_pm = [];
+		var m_int_msp = [];
+		var m_frus_msp = [];
+		var m_stress_msp = [];
+
+			function setcurr_Emotion(x){
+				curr_Emotion = x
+				console.log("SET EMOTION TO " + x);
+				
+
+				setBrainMap();
+				setEmotionScreen();
+			}
+
+			function set_brainmap_val(){
+				console.log("hehehe" + curr_Emotion);
+				if(curr_Emotion ==0){
+					f_brainmap_val = f_int_pm;
+					m_brainmap_val = m_int_pm;
+					c_brainmap_val = comp_int_pm;
+				}
+				else if(curr_Emotion ==1){
+					f_brainmap_val = f_frus_pm;
+					m_brainmap_val = m_frus_pm;
+					c_brainmap_val = comp_frus_pm;
+				}
+				else if(curr_Emotion ==2){
+					f_brainmap_val = f_stress_pm;
+					m_brainmap_val = m_stress_pm;
+					c_brainmap_val = comp_stress_pm;
+				}
+				else if(curr_Emotion ==3){
+
+					f_brainmap_val = f_int_msp;
+					m_brainmap_val = m_int_msp;
+					c_brainmap_val = comp_int_msp;
+				}
+				else if(curr_Emotion ==4){
+					f_brainmap_val = f_frus_msp;
+					m_brainmap_val = m_frus_msp;
+					c_brainmap_val = comp_frus_msp;
+				}
+				else if(curr_Emotion ==5){
+					f_brainmap_val = f_stress_msp;
+					m_brainmap_val = m_stress_msp;
+					c_brainmap_val = comp_stress_msp;
+				}
+			}
+
+			function getColor(brainmap_val){
+				var brainmap_color_val = [];
+				for(var x = 0; x<brainmap_val.length; x++){
+
+					var temp = 0;
+
+					if(brainmap_val[x] > 0.5)
+						temp = 380-(brainmap_val[x]*255);
+					else
+						temp = 125+(brainmap_val[x]*255);
+
+					temp = Math.round(temp);
+
+					var r = 0;
+					var g = 0;
+					var b = 0;
+
+					//compute for r
+					if(brainmap_val[x] > 1)
+						r = 255
+					else if(brainmap_val[x] < 0)
+						r = 0;
+					else if(brainmap_val[x] > 0.5)
+						r = 255;
+					else
+						r = temp;
+					
+					//compute for g
+					if(brainmap_val[x] > 1)
+						g = 0
+					else if(brainmap_val[x] < 0)
+						g = 64;
+					else if(brainmap_val[x] > 0.5)
+						g = temp;
+					else
+						g = 255;
+
+					//compute for b
+					if(brainmap_val[x] > 1)
+						b = 191
+					else if(brainmap_val[x] < 0)
+						b = 255;
+					else
+						b = 0;
+					brainmap_color_val.push("rgb(" + r + "," + g + "," + b + ")");
+					// console.log("rgb(" + r + "," + g + "," + b + ")");
+
+				}
+
+				return brainmap_color_val;
+			}
+
+			function setColorFemale(f_brainmap_color_val){
+				
+				//female
+				//alpha
+				document.getElementById("F_A_AF3_channel").style.backgroundColor = f_brainmap_color_val[0];
+				document.getElementById("F_A_T7_channel").style.backgroundColor = f_brainmap_color_val[1];
+				document.getElementById("F_A_PZ_channel").style.backgroundColor = f_brainmap_color_val[2];
+				document.getElementById("F_A_T8_channel").style.backgroundColor = f_brainmap_color_val[3];
+				document.getElementById("F_A_AF4_channel").style.backgroundColor = f_brainmap_color_val[4];
+
+				//bl
+				document.getElementById("F_BL_AF3_channel").style.backgroundColor = f_brainmap_color_val[5];
+				document.getElementById("F_BL_T7_channel").style.backgroundColor = f_brainmap_color_val[6];
+				document.getElementById("F_BL_PZ_channel").style.backgroundColor = f_brainmap_color_val[7];
+				document.getElementById("F_BL_T8_channel").style.backgroundColor = f_brainmap_color_val[8];
+				document.getElementById("F_BL_AF4_channel").style.backgroundColor = f_brainmap_color_val[9];
+
+				//BH
+				document.getElementById("F_BH_AF3_channel").style.backgroundColor = f_brainmap_color_val[10];
+				document.getElementById("F_BH_T7_channel").style.backgroundColor = f_brainmap_color_val[11];
+				document.getElementById("F_BH_PZ_channel").style.backgroundColor = f_brainmap_color_val[12];
+				document.getElementById("F_BH_T8_channel").style.backgroundColor = f_brainmap_color_val[13];
+				document.getElementById("F_BH_AF4_channel").style.backgroundColor = f_brainmap_color_val[14];
+
+				//G
+				document.getElementById("F_G_AF3_channel").style.backgroundColor = f_brainmap_color_val[15];
+				document.getElementById("F_G_T7_channel").style.backgroundColor = f_brainmap_color_val[16];
+				document.getElementById("F_G_PZ_channel").style.backgroundColor = f_brainmap_color_val[17];
+				document.getElementById("F_G_T8_channel").style.backgroundColor = f_brainmap_color_val[18];
+				document.getElementById("F_G_AF4_channel").style.backgroundColor = f_brainmap_color_val[19];				
+			}
+
+			function setColorMale(m_brainmap_color_val){
+				
+				//male
+				//alpha
+				document.getElementById("M_A_AF3_channel").style.backgroundColor = m_brainmap_color_val[0];
+				document.getElementById("M_A_T7_channel").style.backgroundColor = m_brainmap_color_val[1];
+				document.getElementById("M_A_PZ_channel").style.backgroundColor = m_brainmap_color_val[2];
+				document.getElementById("M_A_T8_channel").style.backgroundColor = m_brainmap_color_val[3];
+				document.getElementById("M_A_AF4_channel").style.backgroundColor = m_brainmap_color_val[4];
+
+				//bl
+				document.getElementById("M_BL_AF3_channel").style.backgroundColor = m_brainmap_color_val[5];
+				document.getElementById("M_BL_T7_channel").style.backgroundColor = m_brainmap_color_val[6];
+				document.getElementById("M_BL_PZ_channel").style.backgroundColor = m_brainmap_color_val[7];
+				document.getElementById("M_BL_T8_channel").style.backgroundColor = m_brainmap_color_val[8];
+				document.getElementById("M_BL_AF4_channel").style.backgroundColor = m_brainmap_color_val[9];
+
+				//BH
+				document.getElementById("M_BH_AF3_channel").style.backgroundColor = m_brainmap_color_val[10];
+				document.getElementById("M_BH_T7_channel").style.backgroundColor = m_brainmap_color_val[11];
+				document.getElementById("M_BH_PZ_channel").style.backgroundColor = m_brainmap_color_val[12];
+				document.getElementById("M_BH_T8_channel").style.backgroundColor = m_brainmap_color_val[13];
+				document.getElementById("M_BH_AF4_channel").style.backgroundColor = m_brainmap_color_val[14];
+
+				//G
+				document.getElementById("M_G_AF3_channel").style.backgroundColor = m_brainmap_color_val[15];
+				document.getElementById("M_G_T7_channel").style.backgroundColor = m_brainmap_color_val[16];
+				document.getElementById("M_G_PZ_channel").style.backgroundColor = m_brainmap_color_val[17];
+				document.getElementById("M_G_T8_channel").style.backgroundColor = m_brainmap_color_val[18];
+				document.getElementById("M_G_AF4_channel").style.backgroundColor = m_brainmap_color_val[19];
+			}
+
+			function setColorComplete(c_brainmap_color_val){
+				//complete
+				//alpha
+				document.getElementById("C_A_AF3_channel").style.backgroundColor = c_brainmap_color_val[0];
+				document.getElementById("C_A_T7_channel").style.backgroundColor = c_brainmap_color_val[1];
+				document.getElementById("C_A_PZ_channel").style.backgroundColor = c_brainmap_color_val[2];
+				document.getElementById("C_A_T8_channel").style.backgroundColor = c_brainmap_color_val[3];
+				document.getElementById("C_A_AF4_channel").style.backgroundColor = c_brainmap_color_val[4];
+
+				//bl
+				document.getElementById("C_BL_AF3_channel").style.backgroundColor = c_brainmap_color_val[5];
+				document.getElementById("C_BL_T7_channel").style.backgroundColor = c_brainmap_color_val[6];
+				document.getElementById("C_BL_PZ_channel").style.backgroundColor = c_brainmap_color_val[7];
+				document.getElementById("C_BL_T8_channel").style.backgroundColor = c_brainmap_color_val[8];
+				document.getElementById("C_BL_AF4_channel").style.backgroundColor = c_brainmap_color_val[9];
+
+				//BH
+				document.getElementById("C_BH_AF3_channel").style.backgroundColor = c_brainmap_color_val[10];
+				document.getElementById("C_BH_T7_channel").style.backgroundColor = c_brainmap_color_val[11];
+				document.getElementById("C_BH_PZ_channel").style.backgroundColor = c_brainmap_color_val[12];
+				document.getElementById("C_BH_T8_channel").style.backgroundColor = c_brainmap_color_val[13];
+				document.getElementById("C_BH_AF4_channel").style.backgroundColor = c_brainmap_color_val[14];
+
+				//G
+				document.getElementById("C_G_AF3_channel").style.backgroundColor = c_brainmap_color_val[15];
+				document.getElementById("C_G_T7_channel").style.backgroundColor = c_brainmap_color_val[16];
+				document.getElementById("C_G_PZ_channel").style.backgroundColor = c_brainmap_color_val[17];
+				document.getElementById("C_G_T8_channel").style.backgroundColor = c_brainmap_color_val[18];
+				document.getElementById("C_G_AF4_channel").style.backgroundColor = c_brainmap_color_val[19];
+			}
+
+			function setAllColors(){
+				console.log(f_brainmap_val);
+				setColorFemale(getColor(f_brainmap_val));
+				setColorMale(getColor(m_brainmap_val));
+				setColorComplete(getColor(c_brainmap_val));
+			}
+
+			function setBrainMap(){
+				set_brainmap_val(); //A, BL, BH, GA 
+				setAllColors();
+			}
+
+			function setUp(){
+				//int == 49
+				//frus == 50
+				//stress == 51
+				//gender == 52
+					//0 = all
+					//1 = female
+					//2 = male
+
+				for(var x = 0; x<3; x++){
+					console.log(x);
+
+					//filtering emotions
+					console.log("FILTERING");
+					var int_List = filterBasedOnEmotion(49, x);
+					var frus_List = filterBasedOnEmotion(50, x);
+					var stress_List = filterBasedOnEmotion(51, x);
+					console.log("FILTERED");
+					
+					//averaging per column
+					console.log("AVERAGING");
+					var int_aveList = getAveAll(int_List);
+					var frus_aveList = getAveAll(frus_List);
+					var stress_aveList = getAveAll(stress_List);
+					console.log("AVERAGED");
+
+					//compiling brainwaves
+					console.log("COMPILING");
+					var int_compiled = compileBrainWaves(int_aveList);
+					var frus_compiled = compileBrainWaves(frus_aveList);
+					var stress_compiled = compileBrainWaves(stress_aveList);
+					console.log("COMPILED");
+
+					//computing lRange and uRange
+					var range_List = computeRange(int_compiled, frus_compiled, stress_compiled);
+
+					//computing final values to be converted to brain colors
+					var int_list_computed = computeFinalBrainVal(int_aveList, range_List);
+					var frus_list_computed = computeFinalBrainVal(frus_aveList, range_List);
+					var stress_list_computed = computeFinalBrainVal(stress_aveList, range_List);
+
+					//get Colors
+					console.log("COLORS");
+					if(x==0){
+						comp_int_pm = getPMOrMSP(int_list_computed, 0);
+						comp_frus_pm = getPMOrMSP(frus_list_computed, 0);
+						comp_stress_pm = getPMOrMSP(stress_list_computed, 0);	
+
+						comp_int_msp = getPMOrMSP(int_list_computed, 1);
+						comp_frus_msp = getPMOrMSP(frus_list_computed, 1);
+						comp_stress_msp = getPMOrMSP(stress_list_computed, 1);	
+					}
+					else if(x==1){
+						f_int_pm = getPMOrMSP(int_list_computed, 0);
+						f_frus_pm = getPMOrMSP(frus_list_computed, 0);
+						f_stress_pm = getPMOrMSP(stress_list_computed, 0);	
+
+						f_int_msp = getPMOrMSP(int_list_computed, 1);
+						f_frus_msp = getPMOrMSP(frus_list_computed, 1);
+						f_stress_msp = getPMOrMSP(stress_list_computed, 1);	
+					}
+					else{
+						m_int_pm = getPMOrMSP(int_list_computed, 0);
+						m_frus_pm = getPMOrMSP(frus_list_computed, 0);
+						m_stress_pm = getPMOrMSP(stress_list_computed, 0);	
+
+						m_int_msp = getPMOrMSP(int_list_computed, 1);
+						m_frus_msp = getPMOrMSP(frus_list_computed, 1);
+						m_stress_msp = getPMOrMSP(stress_list_computed, 1);	
+					}
+					
+				}
+
+				console.log("SETTING");
+				setBrainMap();
+				console.log("UPDATED");
+				setEmotionScreen();
+			}
+
+			function getPMOrMSP(list, selection){
+				var final_list = [];
+				//pm ==0
+				if(selection ==0){
+					for(var x = 0; x<40; x+=2){
+						final_list.push(list[x]);
+					}	
+				}
+				else{
+					for(var x = 1; x<40; x+=2){
+						final_list.push(list[x]);
+					}
+				}
+				return final_list;
+			}
+
+			function computeFinalBrainVal(aveList, rangeList){
+				var brain_val = [];
+				for(var x=0; x<4; x++){
+					for(var y=0; y<10; y++){
+						brain_val.push(minmax(rangeList[0][y], rangeList[1][y], aveList[y + (x*10)]));
+					}
+				}
+				return brain_val;
+			}
+
+			function minmax(lRange, uRange, val){
+				return (val-lRange)/(uRange - lRange);
+			}
+
+			function compileBrainWaves(aveList){
+				var compiledBW = [];
+				var af3_pm = [];
+				var af3_msp = [];
+				var t7_pm = [];
+				var t7_msp = [];
+				var pz_pm = [];
+				var pz_msp = [];
+				var t8_pm = [];
+				var t8_msp = [];
+				var af4_pm = [];
+				var af4_msp =[];
+
+				for(var x=0; x<4; x++){
+					af3_pm.push(aveList[0 + (x*10)]);
+					af3_msp.push(aveList[1 + (x*10)]);
+					t7_pm.push(aveList[2 + (x*10)]);
+					t7_msp.push(aveList[3 + (x*10)]);
+					pz_pm.push(aveList[4 + (x*10)]);
+					pz_msp.push(aveList[5 + (x*10)]);
+					t8_pm.push(aveList[6 + (x*10)]);
+					t8_msp.push(aveList[7 + (x*10)]);
+					af4_pm.push(aveList[8 + (x*10)]);
+					af4_msp.push(aveList[9 + (x*10)]);
+				}
+
+				compiledBW.push(af3_pm);
+				compiledBW.push(af3_msp);
+				compiledBW.push(t7_pm);
+				compiledBW.push(t7_msp);
+				compiledBW.push(pz_pm);
+				compiledBW.push(pz_msp);
+				compiledBW.push(t8_pm);
+				compiledBW.push(t8_msp);
+				compiledBW.push(af4_pm);
+				compiledBW.push(af4_msp);
+
+				return compiledBW;
+			}
+
+
+			function computeRange(int_compiled, frus_compiled, stress_compiled){
+				var lRange_List = [];
+				var uRange_List = [];
+
+				for(var x = 0; x<10; x++){
+					var list = [];
+
+					list = mergeLists(list, int_compiled[x]);
+					list = mergeLists(list, frus_compiled[x]);
+					list = mergeLists(list, stress_compiled[x]);
+
+					var ave = math.mean(list);
+					var sd = math.std(list);
+
+					var lRange = ave-sd;
+					var uRange = ave+sd;
+
+					lRange_List.push(lRange);
+					uRange_List.push(uRange);
+				}
+
+				var range_List = [];
+				range_List.push(lRange_List);
+				range_List.push(uRange_List);
+
+				return range_List;
+			}
+
+			function mergeLists(mainList, toAdd){
+				for(var x = 0; x<toAdd.length; x++){
+					mainList.push(toAdd[x]);
+				}
+				return mainList;
+			}
+
+			function filterBasedOnEmotion(col_num, gender){
+				//int == 49
+				//frus == 50
+				//stress == 51
+				//gender == 52 
+
+				var emotion_lines = [];
+
+				for(var x = 0; x<lines.length; x++){
+					if(gender > 0){
+						if(lines[x][52] == gender){
+							if(lines[x][col_num] == 1){	//1  == 'HIGH'
+				    			emotion_lines.push(lines[x]);
+				    		}
+				    	}
+				    }
+				    else{
+				    	if(lines[x][col_num] == 1){	//1  == 'HIGH'
+				    		emotion_lines.push(lines[x]);
+				    	}
+				    }
+		    	}
+
+		    	return emotion_lines;
+			}
+
+			function getAverageCSV(col, list){
+		    	var sum = 0;
+			    for(var row = 0; row<list.length; row++){
+			    	sum+=list[row][col];
+			    }
+		    	return sum/list.length;
+		    }
+
+		    function getAveAll(list){
+		    	var aveList = [];
+				for(var x = 0; x<40; x++){
+					aveList.push(getAverageCSV(x, list));
+				}
+				return aveList;
+			}
+
+		    /************* FILE READER *************/
+
+			function handleFiles(files) {
+				lines = [];
+		      // Check for the various File API support.
+		      if (window.FileReader) {
+		          // FileReader are supported.
+		          getAsText(files[0]);
+		      } else {
+		          alert('FileReader are not supported in this browser.');
+		      }
+		    }
+
+		    function getAsText(fileToRead) {
+		      var reader = new FileReader();
+		      // Read file into memory as UTF-8      
+		      reader.readAsText(fileToRead);
+		      // Handle errors load
+		      reader.onload = loadHandler;
+		      reader.onerror = errorHandler;
+		    }
+
+		    function loadHandler(event) {
+		      var csv = event.target.result;
+		      processData(csv);
+		    }
+
+		    function processData(csv) {
+		        var allTextLines = csv.split(/\r\n|\n/);
+		        
+		        for (var i=0; i<allTextLines.length; i++) {
+		            var data = allTextLines[i].split(';');
+		                var tarr = [];
+		                for (var j=0; j<data.length; j++) {
+		                    var str = data[j];
+		                    var res = str.split(",");
+		                    for (var k = 0; k<res.length; k++)
+		                    	tarr.push(parseFloat(res[k]));
+		                }
+		                lines.push(tarr);
+		        }
+		      	setUp();
+		    }
+		    
+		    function errorHandler(evt) {
+		      if(evt.target.error.name == "NotReadableError") {
+		          alert("Cannot read file !");
+		      }
+		    }	
+
+		    function setEmotionScreen(){
+		    	enableAllEmotionButtons();
+				if(curr_Emotion == 0){
+					document.getElementById("currState").innerHTML = "PM Interest";
+					document.getElementById("pm_int").disabled = true;
+				}
+				else if(curr_Emotion == 1){
+					document.getElementById("currState").innerHTML = "PM Frustration";
+					document.getElementById("pm_frus").disabled = true;
+				}
+				else if(curr_Emotion == 2){
+					document.getElementById("currState").innerHTML = "PM Stress";
+					document.getElementById("pm_stress").disabled = true;
+				}
+				else if(curr_Emotion == 3){
+					document.getElementById("currState").innerHTML = "MSP Interest";
+					document.getElementById("msp_int").disabled = true;
+				}
+				else if(curr_Emotion == 4){
+					document.getElementById("currState").innerHTML = "MSP Frustration";
+					document.getElementById("msp_frus").disabled = true;
+				}
+				else if(curr_Emotion == 5){
+					document.getElementById("currState").innerHTML = "MSP Stress";
+					document.getElementById("msp_stress").disabled = true;
+				}
+			}
+
+			function enableAllEmotionButtons(){
+				document.getElementById("pm_int").disabled = false;
+				document.getElementById("pm_frus").disabled = false;
+				document.getElementById("pm_stress").disabled = false;
+
+				document.getElementById("msp_int").disabled = false;
+				document.getElementById("msp_frus").disabled = false;
+				document.getElementById("msp_stress").disabled = false;
+			}
+
+		    setBrainMap();
+
+		    </script>
+	</body>
+
+</html>
