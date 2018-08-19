@@ -519,6 +519,42 @@
 			</div>
 		</div>
 	</div>
+
+
+	<div class = "bm-containerSetColors ">	
+		<table style="width:100%">
+		  <tr>
+		  	<th></th>
+		    <th>Combined</th>
+		    <th>Female</th> 
+		    <th>Male</th>
+		  </tr>
+		  <tr>
+		  	<th>Alpha</th>
+		    <td> <p id = "col_a_com" align="center"> </p></td>
+		    <td><p id = "col_a_f" align="center"> </p></td> 
+		    <td><p id = "col_a_m" align="center"> </p></td>
+		  </tr>
+		  <tr>
+		    <th>Beta Low</th>
+		    <td> <p id = "col_bl_com" align="center"> </p></td>
+		    <td><p id = "col_bl_f" align="center"> </p></td> 
+		    <td><p id = "col_bl_m" align="center"> </p></td>
+		  </tr>
+		   <tr>
+		    <th>Beta High</th>
+		    <td> <p id = "col_bh_com" align="center"> </p></td>
+		    <td><p id = "col_bh_f" align="center"> </p></td> 
+		    <td><p id = "col_bh_m" align="center"> </p></td>
+		  </tr>
+		  <tr>
+		    <th>Gamma</th>
+		    <td> <p id = "col_g_com" align="center"> </p></td>
+		    <td><p id = "col_g_f" align="center"> </p></td> 
+		    <td><p id = "col_g_m" align="center"> </p></td>
+		  </tr>
+		</table>
+	</div>
 	            
 	<script>
 		curr_Emotion = 0;
@@ -563,6 +599,68 @@
 
 				setBrainMap();
 				setEmotionScreen();
+				updateBrainVal();
+			}
+
+			function updateBrainVal(){
+				// f_brainmap_val
+				// 0 - alpha
+				// 1 - beta low
+				// 2 - beta high
+				// 3 - gamma
+				document.getElementById("col_a_com").innerHTML = listToString(c_brainmap_val,0);
+				document.getElementById("col_bl_com").innerHTML = listToString(c_brainmap_val,1);
+				document.getElementById("col_bh_com").innerHTML = listToString(c_brainmap_val,2);
+				document.getElementById("col_g_com").innerHTML = listToString(c_brainmap_val,3);
+
+				document.getElementById("col_a_f").innerHTML = listToString(f_brainmap_val,0);
+				document.getElementById("col_bl_f").innerHTML = listToString(f_brainmap_val,1);
+				document.getElementById("col_bh_f").innerHTML = listToString(f_brainmap_val,2);
+				document.getElementById("col_g_f").innerHTML = listToString(f_brainmap_val,3);
+
+				document.getElementById("col_a_m").innerHTML = listToString(m_brainmap_val,0);
+				document.getElementById("col_bl_m").innerHTML = listToString(m_brainmap_val,1);
+				document.getElementById("col_bh_m").innerHTML = listToString(m_brainmap_val,2);
+				document.getElementById("col_g_m").innerHTML = listToString(m_brainmap_val,3);
+
+
+				// document.getElementById("col2").innerHTML = listToString(m_brainmap_val);
+				// document.getElementById("col3").innerHTML = listToString(c_brainmap_val);
+
+			}
+			function listToString(list, n){
+				var str = "";
+				var start = 0;
+
+				if(n ==0)
+					start = 0;
+				else if(n==1)
+					start = 5;
+				else if(n==2)
+					start = 10;
+				else if(n==3)
+					start = 15;
+
+				for(var x = 0; x<5; x++){
+					var s_word = "";
+					if(x == 0)
+						s_word+= "AF3: ";
+					else if(x == 1)
+						s_word+= "T7: ";
+					else if(x == 2)
+						s_word+= "Pz: ";
+					else if(x == 3)
+						s_word+= "AF4: ";
+					else
+						s_word+= "T8: ";
+
+					str+= s_word + list[start + x].toFixed(4) + " <br> ";
+
+
+				}
+
+				return str;
+
 			}
 
 			function set_brainmap_val(){
@@ -810,6 +908,9 @@
 						comp_int_msp = getPMOrMSP(int_list_computed, 1);
 						comp_frus_msp = getPMOrMSP(frus_list_computed, 1);
 						comp_stress_msp = getPMOrMSP(stress_list_computed, 1);	
+
+						console.log("HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+						console.log(comp_int_pm);
 					}
 					else if(x==1){
 						f_int_pm = getPMOrMSP(int_list_computed, 0);
@@ -819,6 +920,8 @@
 						f_int_msp = getPMOrMSP(int_list_computed, 1);
 						f_frus_msp = getPMOrMSP(frus_list_computed, 1);
 						f_stress_msp = getPMOrMSP(stress_list_computed, 1);	
+						console.log("HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+						console.log(int_list_computed);
 					}
 					else{
 						m_int_pm = getPMOrMSP(int_list_computed, 0);
@@ -828,6 +931,8 @@
 						m_int_msp = getPMOrMSP(int_list_computed, 1);
 						m_frus_msp = getPMOrMSP(frus_list_computed, 1);
 						m_stress_msp = getPMOrMSP(stress_list_computed, 1);	
+						console.log("HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
+						console.log(int_list_computed);
 					}
 					
 				}
