@@ -6,7 +6,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.1.0/math.js"></script>
 	</head>
 
-
 	<body onload="loadFirst()">
 		<div class="heading">
 			<h1>Brain Map</h1>
@@ -526,7 +525,7 @@
 		<button type="button" onclick="updateCurrFunc(0)" id="func_brain">Brain Values</button>
 		<button type="button" onclick="updateCurrFunc(1)" id="func_color">Color Values</button>
 		<button type="button" onclick="updateCurrFunc(2)" id="func_range">Range Values</button>
-		
+
 		<table style="width:100%">
 		  <tr>
 		  	<th></th>
@@ -609,17 +608,13 @@
 				document.getElementById("pm_int").disabled = true;
 				document.getElementById("pm_frus").disabled = true;
 				document.getElementById("pm_stress").disabled = true;
-
 				document.getElementById("msp_int").disabled = true;
 				document.getElementById("msp_frus").disabled = true;
 				document.getElementById("msp_stress").disabled = true;
-
-
 				disableAllBrainButtons();
 			}
 
 			function updateCurrFunc(x){
-				console.log("YO CURR FUNC: " + curr_func);
 				curr_func = x;
 				updateBrainValueDisplay();
 			}
@@ -632,14 +627,10 @@
 					updateBrainVal(c_color, f_color, m_color);
 				else
 					updateBrainRange(range_List_comp, range_List_comp, range_List_comp);
-				console.log("DONE 1");
-
 				setBrainScreen();
-				console.log("DONE 2");
 			}
 
 			function setBrainScreen(){
-				console.log("afioaidjioasdjoiasoijdfoijsaoijfCURR FUNC: " + curr_func);
 				enableAllBrainButtons();
 				if(curr_func == 0){
 					document.getElementById("currFunc").innerHTML = "Brain Values";
@@ -653,7 +644,6 @@
 					document.getElementById("currFunc").innerHTML = "RangeValues";
 					document.getElementById("func_range").disabled = true;
 				}
-
 			}
 
 			function enableAllBrainButtons(){
@@ -670,22 +660,12 @@
 
 			function setcurr_Emotion(x){
 				curr_Emotion = x
-				
-
 				setBrainMap();
 				updateBrainValueDisplay();
 				setEmotionScreen();
-				// updateBrainVal(c_brainmap_val, f_brainmap_val, m_brainmap_val);
-				
-				// // updateBrainVal(c_color, f_color, m_color);
-				// updateBrainRange(range_List_comp, range_List_comp, range_List_comp);
-				// console.log("RANGE");
-				// console.log(range_List_comp);
-
 			}
 
 			function isPM(){
-				console.log("curr_Emotion: " + curr_Emotion);
 				if(curr_Emotion==0 || curr_Emotion==1 || curr_Emotion==2)
 					return true;
 				return false;
@@ -717,31 +697,21 @@
 						s_word+= "AF4: ";
 					else
 						s_word+= "T8: ";
-
 					s_word += currlist[x] + " - " + currlist[x + 5] + "<br>";
-
 				}
 
-				
 				document.getElementById("col_a_com").innerHTML = s_word;
 				document.getElementById("col_bl_com").innerHTML = s_word;
 				document.getElementById("col_bh_com").innerHTML = s_word;
 				document.getElementById("col_g_com").innerHTML = s_word;
-
 				document.getElementById("col_a_f").innerHTML = s_word;
 				document.getElementById("col_bl_f").innerHTML = s_word;
 				document.getElementById("col_bh_f").innerHTML = s_word;
 				document.getElementById("col_g_f").innerHTML = s_word;
-
 				document.getElementById("col_a_m").innerHTML = s_word;
 				document.getElementById("col_bl_m").innerHTML = s_word;
 				document.getElementById("col_bh_m").innerHTML = s_word;
 				document.getElementById("col_g_m").innerHTML = s_word;
-
-
-				// document.getElementById("col2").innerHTML = listToString(m_brainmap_val);
-				// document.getElementById("col3").innerHTML = listToString(c_brainmap_val);
-
 			}
 
 
@@ -756,24 +726,17 @@
 				document.getElementById("col_bl_com").innerHTML = listToString(c,1);
 				document.getElementById("col_bh_com").innerHTML = listToString(c,2);
 				document.getElementById("col_g_com").innerHTML = listToString(c,3);
-
 				document.getElementById("col_a_f").innerHTML = listToString(f,0);
 				document.getElementById("col_bl_f").innerHTML = listToString(f,1);
 				document.getElementById("col_bh_f").innerHTML = listToString(f,2);
 				document.getElementById("col_g_f").innerHTML = listToString(f,3);
-
 				document.getElementById("col_a_m").innerHTML = listToString(m,0);
 				document.getElementById("col_bl_m").innerHTML = listToString(m,1);
 				document.getElementById("col_bh_m").innerHTML = listToString(m,2);
 				document.getElementById("col_g_m").innerHTML = listToString(m,3);
-
-
-				// document.getElementById("col2").innerHTML = listToString(m_brainmap_val);
-				// document.getElementById("col3").innerHTML = listToString(c_brainmap_val);
-
 			}
-			function listToString(list, n){
 
+			function listToString(list, n){
 				var str = "";
 				var start = 0;
 
@@ -802,9 +765,7 @@
 					// str+= s_word + list[start + x].toFixed(4) + " <br> ";
 					str+= s_word + list[start + x] + " <br> ";
 				}
-
 				return str;
-
 			}
 
 			function set_brainmap_val(){
@@ -844,14 +805,11 @@
 			function getColor(brainmap_val){
 				var brainmap_color_val = [];
 				for(var x = 0; x<brainmap_val.length; x++){
-
 					var temp = 0;
-
 					if(brainmap_val[x] > 0.5)
 						temp = 380-(brainmap_val[x]*255);
 					else
 						temp = 125+(brainmap_val[x]*255);
-
 					temp = Math.round(temp);
 
 					var r = 0;
@@ -886,15 +844,12 @@
 					else
 						b = 0;
 					brainmap_color_val.push("rgb(" + r + "," + g + "," + b + ")");
-					// console.log("rgb(" + r + "," + g + "," + b + ")");
-
 				}
 
 				return brainmap_color_val;
 			}
 
 			function setColorFemale(f_brainmap_color_val){
-				
 				//female
 				//alpha
 				document.getElementById("F_A_AF3_channel").style.backgroundColor = f_brainmap_color_val[0];
@@ -926,7 +881,6 @@
 			}
 
 			function setColorMale(m_brainmap_color_val){
-				
 				//male
 				//alpha
 				document.getElementById("M_A_AF3_channel").style.backgroundColor = m_brainmap_color_val[0];
@@ -989,7 +943,6 @@
 			}
 
 			function setAllColors(){
-				console.log(f_brainmap_val);
 				f_color = getColor(f_brainmap_val);
 				m_color = getColor(m_brainmap_val);
 				c_color = getColor(c_brainmap_val);
@@ -1013,8 +966,6 @@
 					//2 = male
 
 				for(var x = 0; x<3; x++){
-					console.log(x);
-
 					//filtering emotions
 					console.log("FILTERING");
 					var int_List = filterBasedOnEmotion(49, x);
@@ -1046,7 +997,6 @@
 					var stress_list_computed = computeFinalBrainVal(stress_aveList, range_List);
 
 					//get Colors
-					console.log("COLORS");
 					if(x==0){
 						comp_int_pm = getPMOrMSP(int_list_computed, 0);
 						comp_frus_pm = getPMOrMSP(frus_list_computed, 0);
@@ -1055,9 +1005,6 @@
 						comp_int_msp = getPMOrMSP(int_list_computed, 1);
 						comp_frus_msp = getPMOrMSP(frus_list_computed, 1);
 						comp_stress_msp = getPMOrMSP(stress_list_computed, 1);	
-
-						console.log("HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
-						console.log(comp_int_pm);
 					}
 					else if(x==1){
 						f_int_pm = getPMOrMSP(int_list_computed, 0);
@@ -1067,8 +1014,6 @@
 						f_int_msp = getPMOrMSP(int_list_computed, 1);
 						f_frus_msp = getPMOrMSP(frus_list_computed, 1);
 						f_stress_msp = getPMOrMSP(stress_list_computed, 1);	
-						console.log("HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
-						console.log(int_list_computed);
 					}
 					else{
 						m_int_pm = getPMOrMSP(int_list_computed, 0);
@@ -1078,10 +1023,7 @@
 						m_int_msp = getPMOrMSP(int_list_computed, 1);
 						m_frus_msp = getPMOrMSP(frus_list_computed, 1);
 						m_stress_msp = getPMOrMSP(stress_list_computed, 1);	
-						console.log("HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
-						console.log(int_list_computed);
 					}
-					
 				}
 
 				console.log("SETTING");
@@ -1161,24 +1103,19 @@
 				return compiledBW;
 			}
 
-
 			function computeRange(int_compiled, frus_compiled, stress_compiled){
 				var lRange_List = [];
 				var uRange_List = [];
 
 				for(var x = 0; x<10; x++){
 					var list = [];
-
 					list = mergeLists(list, int_compiled[x]);
 					list = mergeLists(list, frus_compiled[x]);
 					list = mergeLists(list, stress_compiled[x]);
-
 					var ave = math.mean(list);
 					var sd = math.std(list);
-
 					var lRange = ave-sd;
 					var uRange = ave+sd;
-
 					lRange_List.push(lRange);
 					uRange_List.push(uRange);
 				}
@@ -1186,7 +1123,6 @@
 				var range_List = [];
 				range_List.push(lRange_List);
 				range_List.push(uRange_List);
-
 				return range_List;
 			}
 
@@ -1204,7 +1140,6 @@
 				//gender == 52 
 
 				var emotion_lines = [];
-
 				for(var x = 0; x<lines.length; x++){
 					if(gender > 0){
 						if(lines[x][52] == gender){
@@ -1268,7 +1203,6 @@
 
 		    function processData(csv) {
 		        var allTextLines = csv.split(/\r\n|\n/);
-		        
 		        for (var i=0; i<allTextLines.length; i++) {
 		            var data = allTextLines[i].split(';');
 		                var tarr = [];
@@ -1321,15 +1255,12 @@
 				document.getElementById("pm_int").disabled = false;
 				document.getElementById("pm_frus").disabled = false;
 				document.getElementById("pm_stress").disabled = false;
-
 				document.getElementById("msp_int").disabled = false;
 				document.getElementById("msp_frus").disabled = false;
 				document.getElementById("msp_stress").disabled = false;
 			}
 
 		    setBrainMap();
-
 		    </script>
 	</body>
-
 </html>

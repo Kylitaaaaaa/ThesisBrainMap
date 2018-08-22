@@ -5,7 +5,6 @@
 		<link rel="stylesheet" type="text/css" href="WebSystem.css">
 	</head>
 
-
 	<body onload="loadFirst()">
 		<div class="heading">
 			<h1>Brain Map</h1>
@@ -30,7 +29,6 @@
 			<button type="button" onclick="setcurr_Emotion(3)" id="msp_int">MSP interest</button>
 			<button type="button" onclick="setcurr_Emotion(4)" id="msp_frus">MSP frustration</button>
 			<button type="button" onclick="setcurr_Emotion(5)" id="msp_stress">MSP stress</button>
-
 
 			<br />
 			<button type="button" onclick="prev()" id="prev">PREV</button>
@@ -159,19 +157,13 @@
 	  			</table>
 	  			<br>
 	  			<br>
-
 	  			<button type="button" onclick="getLURangeTB()">Update Ranges</button>
 	  			<br>
 	  			<br>
-
 	  		</div>
-
 		</div>
 
-
-		
 	<div class = "bm-container">	
-		
 		<div class="brainmap">
 			<h4>ALPHA</h4>
 			<div class = "rows">
@@ -179,13 +171,11 @@
 					<p style="margin-bottom: 2px">AF3</p>
 					<div class="channel" id = "A_AF3_channel"></div>
 				</div>
-
 				<div class="second">
 					<p style="margin-bottom: 2px">AF4</p>
 					<div class="channel" id = "A_AF4_channel"></div>
 				</div>
 			</div>
-
 			<br >
 			<br >
 			<div class = "rows">
@@ -193,25 +183,19 @@
 					<p style="margin-bottom: 2px">Ts7 </p>
 					<div class="channel" id = "A_T7_channel"></div>
 				</div>
-
 				<div class="second">
 					<p style="margin-bottom: 2px">Ts8 </p>
 					<div class="channel" id = "A_T8_channel"></div>
 				</div>
 			</div>
-			
 			<br />
-
 			<div class = "rows">
 				<div class="first">
 					<p style="margin-bottom: 2px">Pz</p>
 					<div class="last_channel" id = "A_PZ_channel"></div>
 				</div>
 			</div>
-
 		</div>
-
-
 		<div class="brainmap">
 			<h5>BETA LOW</h5>
 			<div class = "rows">
@@ -219,13 +203,11 @@
 					<p style="margin-bottom: 2px">AF3</p>
 					<div class="channel" id = "BL_AF3_channel"></div>
 				</div>
-
 				<div class="second">
 					<p style="margin-bottom: 2px">AF4</p>
 					<div class="channel" id = "BL_AF4_channel"></div>
 				</div>
 			</div>
-
 			<br >
 			<br >
 			<div class = "rows">
@@ -233,25 +215,19 @@
 					<p style="margin-bottom: 2px">Ts7 </p>
 					<div class="channel" id = "BL_T7_channel"></div>
 				</div>
-
 				<div class="second">
 					<p style="margin-bottom: 2px">Ts8 </p>
 					<div class="channel" id = "BL_T8_channel"></div>
 				</div>
 			</div>
-			
 			<br />
-
 			<div class = "rows">
 				<div class="first">
 					<p style="margin-bottom: 2px">Pz</p>
 					<div class="last_channel" id = "BL_PZ_channel"></div>
 				</div>
 			</div>
-
 		</div>
-
-
 		<div class="brainmap">
 			<h5>BETA HIGH</h5>
 				<div class = "rows">
@@ -259,13 +235,11 @@
 						<p style="margin-bottom: 2px">AF3</p>
 						<div class="channel" id = "BH_AF3_channel"></div>
 					</div>
-
 					<div class="second">
 						<p style="margin-bottom: 2px">AF4</p>
 						<div class="channel" id = "BH_AF4_channel"></div>
 					</div>
 				</div>
-
 				<br >
 				<br >
 				<div class = "rows">
@@ -273,15 +247,12 @@
 						<p style="margin-bottom: 2px">Ts7 </p>
 						<div class="channel" id = "BH_T7_channel"></div>
 					</div>
-
 					<div class="second">
 						<p style="margin-bottom: 2px">Ts8 </p>
 						<div class="channel" id = "BH_T8_channel"></div>
 					</div>
 				</div>
-					
 				<br />
-
 				<div class = "rows">
 					<div class="first">
 						<p style="margin-bottom: 2px">Pz</p>
@@ -289,7 +260,6 @@
 					</div>
 				</div>
 			</div>
-
 		<div class="brainmap">
 			<h4>GAMMA</h4>
 			<div class = "rows">
@@ -297,13 +267,11 @@
 					<p style="margin-bottom: 2px">AF3</p>
 					<div class="channel" id = "G_AF3_channel"></div>
 				</div>
-
 				<div class="second">
 					<p style="margin-bottom: 2px">AF4</p>
 					<div class="channel" id = "G_AF4_channel"></div>
 				</div>
 			</div>
-
 			<br >
 			<br >
 			<div class = "rows">
@@ -311,24 +279,19 @@
 					<p style="margin-bottom: 2px">Ts7 </p>
 					<div class="channel" id = "G_T7_channel"></div>
 				</div>
-
 				<div class="second">
 					<p style="margin-bottom: 2px">Ts8 </p>
 					<div class="channel" id = "G_T8_channel"></div>
 				</div>
 			</div>
-					
 			<br />
-
 			<div class = "rows">
 				<div class="first">
 					<p style="margin-bottom: 2px">Pz</p>
 					<div class="last_channel" id = "G_PZ_channel"></div>
 				</div>
 			</div>
-
 		</div>
-
 		<img src="brainMap.png" style="width:200px;height:280px;">
 	</div>
 
@@ -353,7 +316,6 @@
 			var PM_T8_URange = -0.7636010971152588;
 			var PM_AF4_LRange = 0.7634819542787937;
 			var PM_AF4_URange = 0.9813820205603965;
-
 
 			var MSP_AF3_LRange = -0.7610324343801486;
 			var MSP_AF3_URange = 1.3177609305252609;
@@ -455,14 +417,11 @@
 			function getColor(brainmap_val){
 				var brainmap_color_val = [];
 				for(var x = 0; x<brainmap_val.length; x++){
-
 					var temp = 0;
-
 					if(brainmap_val[x] > 0.5)
 						temp = 380-(brainmap_val[x]*255);
 					else
 						temp = 125+(brainmap_val[x]*255);
-
 					temp = Math.round(temp);
 
 					var r = 0;
@@ -497,7 +456,6 @@
 					else
 						b = 0;
 					brainmap_color_val.push("rgb(" + r + "," + g + "," + b + ")");
-
 				}
 				return brainmap_color_val;
 			}
@@ -539,8 +497,6 @@
 				document.getElementById("G_PZ_channel").style.backgroundColor = brainmap_color_val[17];
 				document.getElementById("G_T8_channel").style.backgroundColor = brainmap_color_val[18];
 				document.getElementById("G_AF4_channel").style.backgroundColor = brainmap_color_val[19];
-
-
 			}
 
 			function setBrainMap(){
@@ -576,8 +532,6 @@
 				document.getElementById("row_num").innerHTML = curr_row;
 			}
 
-
-
 			function filterBasedOnEmotion(){
 				var curr_col = 0;
 				if(curr_Emotion == 0 || curr_Emotion == 3)
@@ -586,11 +540,9 @@
 					curr_col = 50; //frustration
 				else
 					curr_col = 51; //stress
-
 				for(var x = 0; x<lines.length; x++){
 					if(lines[x][curr_col] == 1)	//1  == 'HIGH'
 		    			curr_Lines.push(lines[x]);
-		    		console.log(lines[x][curr_col]);
 		    	}
 			}
 
@@ -676,7 +628,6 @@
 			}
 
 			/************* FILE READER *************/
-
 			function handleFiles(files) {
 				lines = [];
 		      // Check for the various File API support.
@@ -854,11 +805,8 @@
 					MSP_T8_URange = parseFloat(document.getElementById("MSP_T8_URange").value);
 					MSP_AF4_LRange = parseFloat(document.getElementById("MSP_AF4_LRange").value);
 					MSP_AF4_URange = parseFloat(document.getElementById("MSP_AF4_URange").value);
-
-					console.log("UPDATED: " + PM_AF3_URange);
-
+					
 					setUp();
-
 				}
 				else
 					alert("LRange should be < URange");
