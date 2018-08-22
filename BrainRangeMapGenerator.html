@@ -522,6 +522,9 @@
 
 
 	<div class = "bm-containerSetColors ">	
+		<button type="button" onclick="updateCurrFunc(0)">Brain Values</button>
+		<button type="button" onclick="updateCurrFunc(1)">Color Values</button>
+		<button type="button" onclick="updateCurrFunc(2)">Range Values</button>
 		<table style="width:100%">
 		  <tr>
 		  	<th></th>
@@ -565,6 +568,12 @@
 		var m_brainmap_val = [];
 		var c_brainmap_val = [];
 
+		var f_color = [];
+		var m_color = [];
+		var c_color = [];
+
+		var range_List_comp = [];
+
 		/************* CSV CONTENT *************/
 			var lines = [];
 			var curr_Lines = [];
@@ -592,36 +601,126 @@
 		var m_frus_msp = [];
 		var m_stress_msp = [];
 
+		var curr_func = 0;
+
+			function updateCurrFunc(x){
+				curr_func = x;
+				updateBrainValueDisplay();
+			}
+
+			function updateBrainValueDisplay(){
+				if(curr_func ==0)
+					updateBrainVal(c_brainmap_val, f_brainmap_val, m_brainmap_val);
+				else if(curr_func ==1)
+					updateBrainVal(c_color, f_color, m_color);
+				else
+					updateBrainRange(range_List_comp, range_List_comp, range_List_comp);
+			}
+
 			function setcurr_Emotion(x){
 				curr_Emotion = x
 				console.log("SET EMOTION TO " + x);
 				
 
 				setBrainMap();
+				updateBrainValueDisplay();
 				setEmotionScreen();
-				updateBrainVal();
+				// updateBrainVal(c_brainmap_val, f_brainmap_val, m_brainmap_val);
+				
+				// // updateBrainVal(c_color, f_color, m_color);
+				// updateBrainRange(range_List_comp, range_List_comp, range_List_comp);
+				// console.log("RANGE");
+				// console.log(range_List_comp);
+
 			}
 
-			function updateBrainVal(){
+			function isPM(){
+				console.log("curr_Emotion: " + curr_Emotion);
+				if(curr_Emotion==0 || curr_Emotion==1 || curr_Emotion==2)
+					return true;
+				return false;
+			}
+
+			function updateBrainRange(c, f, m){
 				// f_brainmap_val
 				// 0 - alpha
 				// 1 - beta low
 				// 2 - beta high
 				// 3 - gamma
-				document.getElementById("col_a_com").innerHTML = listToString(c_brainmap_val,0);
-				document.getElementById("col_bl_com").innerHTML = listToString(c_brainmap_val,1);
-				document.getElementById("col_bh_com").innerHTML = listToString(c_brainmap_val,2);
-				document.getElementById("col_g_com").innerHTML = listToString(c_brainmap_val,3);
 
-				document.getElementById("col_a_f").innerHTML = listToString(f_brainmap_val,0);
-				document.getElementById("col_bl_f").innerHTML = listToString(f_brainmap_val,1);
-				document.getElementById("col_bh_f").innerHTML = listToString(f_brainmap_val,2);
-				document.getElementById("col_g_f").innerHTML = listToString(f_brainmap_val,3);
+				var currlist = [];
+				if(isPM()){
+					currlist = c[0];
+					console.log("PM");
+				}
+				else{
+					currlist = c[1];
+					console.log("MSP");
+				}
+				var s_word = "";
+				for(var x=0; x<5; x++){
+					if(x == 0)
+						s_word+= "AF3: ";
+					else if(x == 1)
+						s_word+= "T7: ";
+					else if(x == 2)
+						s_word+= "Pz: ";
+					else if(x == 3)
+						s_word+= "AF4: ";
+					else
+						s_word+= "T8: ";
 
-				document.getElementById("col_a_m").innerHTML = listToString(m_brainmap_val,0);
-				document.getElementById("col_bl_m").innerHTML = listToString(m_brainmap_val,1);
-				document.getElementById("col_bh_m").innerHTML = listToString(m_brainmap_val,2);
-				document.getElementById("col_g_m").innerHTML = listToString(m_brainmap_val,3);
+					s_word += currlist[x] + " - " + currlist[x + 5] + "<br>";
+
+				}
+
+				console.log("HELLO");
+				console.log(s_word);
+
+				
+				document.getElementById("col_a_com").innerHTML = s_word;
+				document.getElementById("col_bl_com").innerHTML = s_word;
+				document.getElementById("col_bh_com").innerHTML = s_word;
+				document.getElementById("col_g_com").innerHTML = s_word;
+
+				document.getElementById("col_a_f").innerHTML = s_word;
+				document.getElementById("col_bl_f").innerHTML = s_word;
+				document.getElementById("col_bh_f").innerHTML = s_word;
+				document.getElementById("col_g_f").innerHTML = s_word;
+
+				document.getElementById("col_a_m").innerHTML = s_word;
+				document.getElementById("col_bl_m").innerHTML = s_word;
+				document.getElementById("col_bh_m").innerHTML = s_word;
+				document.getElementById("col_g_m").innerHTML = s_word;
+
+
+				// document.getElementById("col2").innerHTML = listToString(m_brainmap_val);
+				// document.getElementById("col3").innerHTML = listToString(c_brainmap_val);
+
+			}
+
+
+			function updateBrainVal(c, f, m){
+				// f_brainmap_val
+				// 0 - alpha
+				// 1 - beta low
+				// 2 - beta high
+				// 3 - gamma
+				
+				document.getElementById("col_a_com").innerHTML = listToString(c,0);
+				document.getElementById("col_bl_com").innerHTML = listToString(c,1);
+				document.getElementById("col_bh_com").innerHTML = listToString(c,2);
+				document.getElementById("col_g_com").innerHTML = listToString(c,3);
+
+				document.getElementById("col_a_f").innerHTML = listToString(f,0);
+				document.getElementById("col_bl_f").innerHTML = listToString(f,1);
+				document.getElementById("col_bh_f").innerHTML = listToString(f,2);
+				document.getElementById("col_g_f").innerHTML = listToString(f,3);
+
+				document.getElementById("col_a_m").innerHTML = listToString(m,0);
+				document.getElementById("col_bl_m").innerHTML = listToString(m,1);
+				document.getElementById("col_bh_m").innerHTML = listToString(m,2);
+				document.getElementById("col_g_m").innerHTML = listToString(m,3);
 
 
 				// document.getElementById("col2").innerHTML = listToString(m_brainmap_val);
@@ -629,6 +728,9 @@
 
 			}
 			function listToString(list, n){
+
+				console.log("COLOR");
+				console.log(list);
 				var str = "";
 				var start = 0;
 
@@ -654,9 +756,8 @@
 					else
 						s_word+= "T8: ";
 
-					str+= s_word + list[start + x].toFixed(4) + " <br> ";
-
-
+					// str+= s_word + list[start + x].toFixed(4) + " <br> ";
+					str+= s_word + list[start + x] + " <br> ";
 				}
 
 				return str;
@@ -847,9 +948,12 @@
 
 			function setAllColors(){
 				console.log(f_brainmap_val);
-				setColorFemale(getColor(f_brainmap_val));
-				setColorMale(getColor(m_brainmap_val));
-				setColorComplete(getColor(c_brainmap_val));
+				f_color = getColor(f_brainmap_val);
+				m_color = getColor(m_brainmap_val);
+				c_color = getColor(c_brainmap_val);
+				setColorFemale(f_color);
+				setColorMale(m_color);
+				setColorComplete(c_color);
 			}
 
 			function setBrainMap(){
@@ -892,6 +996,7 @@
 
 					//computing lRange and uRange
 					var range_List = computeRange(int_compiled, frus_compiled, stress_compiled);
+					range_List_comp = range_List;
 
 					//computing final values to be converted to brain colors
 					var int_list_computed = computeFinalBrainVal(int_aveList, range_List);
