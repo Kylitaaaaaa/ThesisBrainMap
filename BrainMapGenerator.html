@@ -772,17 +772,18 @@
 			}
 
 			function getLURangeTB(){
-				if(parseFloat(document.getElementById("PM_AF3_LRange").value) < parseFloat(document.getElementById("PM_AF3_URange").value) &&
-					parseFloat(document.getElementById("PM_T7_LRange").value) < parseFloat(document.getElementById("PM_T7_URange").value) &&
-					parseFloat(document.getElementById("PM_PZ_LRange").value) < parseFloat(document.getElementById("PM_PZ_URange").value) &&
-					parseFloat(document.getElementById("PM_T8_LRange").value) < parseFloat(document.getElementById("PM_T8_URange").value) && 
-					parseFloat(document.getElementById("PM_AF4_LRange").value) < parseFloat(document.getElementById("PM_AF4_URange").value) &&
 
-					parseFloat(document.getElementById("MSP_AF3_LRange").value) < parseFloat(document.getElementById("MSP_AF3_URange").value) &&
-					parseFloat(document.getElementById("MSP_T7_LRange").value) < parseFloat(document.getElementById("MSP_T7_URange").value) &&
-					parseFloat(document.getElementById("MSP_PZ_LRange").value) < parseFloat(document.getElementById("MSP_PZ_URange").value) &&
-					parseFloat(document.getElementById("MSP_T8_LRange").value) < parseFloat(document.getElementById("MSP_T8_URange").value) && 
-					parseFloat(document.getElementById("MSP_AF4_LRange").value) < parseFloat(document.getElementById("MSP_AF4_URange").value)){
+				if(parseFloat(document.getElementById("PM_AF3_LRange").value) <= parseFloat(document.getElementById("PM_AF3_URange").value) &&
+					parseFloat(document.getElementById("PM_T7_LRange").value) <= parseFloat(document.getElementById("PM_T7_URange").value) &&
+					parseFloat(document.getElementById("PM_PZ_LRange").value) <= parseFloat(document.getElementById("PM_PZ_URange").value) &&
+					parseFloat(document.getElementById("PM_T8_LRange").value) <= parseFloat(document.getElementById("PM_T8_URange").value) && 
+					parseFloat(document.getElementById("PM_AF4_LRange").value) <= parseFloat(document.getElementById("PM_AF4_URange").value) &&
+
+					parseFloat(document.getElementById("MSP_AF3_LRange").value) <= parseFloat(document.getElementById("MSP_AF3_URange").value) &&
+					parseFloat(document.getElementById("MSP_T7_LRange").value) <= parseFloat(document.getElementById("MSP_T7_URange").value) &&
+					parseFloat(document.getElementById("MSP_PZ_LRange").value) <= parseFloat(document.getElementById("MSP_PZ_URange").value) &&
+					parseFloat(document.getElementById("MSP_T8_LRange").value) <= parseFloat(document.getElementById("MSP_T8_URange").value) && 
+					parseFloat(document.getElementById("MSP_AF4_LRange").value) <= parseFloat(document.getElementById("MSP_AF4_URange").value)){
 
 					PM_AF3_LRange = parseFloat(document.getElementById("PM_AF3_LRange").value);
 					PM_AF3_URange = parseFloat(document.getElementById("PM_AF3_URange").value);
@@ -810,6 +811,9 @@
 				}
 				else
 					alert("LRange should be < URange");
+
+
+
 			}			
 		    </script>
 	</body>
